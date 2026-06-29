@@ -955,3 +955,53 @@ section { position: relative; }
   0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.3); }
   50% { box-shadow: 0 0 0 8px rgba(16,185,129,0); }
 }
+
+/* ═══════════ ENHANCED MOBILE RESPONSIVE ═══════════ */
+
+@media (max-width: 900px) {
+  .about-grid { gap: 2rem; }
+  .contact-grid { gap: 2rem; }
+  .hero-social { grid-template-columns: 1fr 1fr; }
+  .cert-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .achievement-card { flex-direction: column; gap: 12px; }
+  .achievement-header { flex-direction: column; gap: 4px; }
+  .principles-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero-inner { gap: 1.5rem; text-align: center; }
+  .hero-badge { margin: 0 auto 1rem; }
+  .hero-desc { margin: 0 auto 1.5rem; }
+  .hero-btns { justify-content: center; }
+  .hero-stats { justify-content: center; flex-wrap: wrap; }
+  .hero-social { max-width: 250px; margin: 0 auto; }
+  .hero-name { font-size: clamp(2rem, 8vw, 3rem); }
+
+  .about-photo { max-width: 280px; margin: 0 auto; }
+  .about-details { gap: 0.5rem; }
+  .about-detail-item { padding: 0.5rem 0.75rem; }
+
+  .section-title { font-size: clamp(1.5rem, 5vw, 2rem); }
+  .section-head { margin-bottom: 2rem; }
+
+  .marquee-item { font-size: 0.75rem; }
+  .cert-grid { grid-template-columns: 1fr; }
+  .principles-grid { grid-template-columns: 1fr; }
+  .hobbies-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .contact-link { font-size: 0.82rem; }
+  .form-input { font-size: 1rem; } /* prevent iOS zoom */
+
+  .footer-copy, .footer-links a { font-size: 0.75rem; }
+  footer { flex-direction: column; text-align: center; }
+
+  .scroll-progress { height: 2px; }
+  .back-to-top { bottom: 1.5rem; right: 1.5rem; width: 40px; height: 40px; }
+}
+
+@media (max-width: 380px) {
+  .hero-stats { gap: 0.75rem; }
+  .hero-stat-n { font-size: 1.2rem; }
+  .hobbies-grid { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 { gap: 1rem; }
+}

@@ -42,7 +42,13 @@ export function Skills() {
               <div className="skill-grid">
                 {items.map((s) => (
                   <div key={s.name} className="skill-item">
-                    <div className="skill-icon" style={{ background: s.color }}>{s.icon}</div>
+                    <div className="skill-icon" style={{ background: s.color }}>
+                      {s.img ? (
+                        <img src={s.img} alt={s.name} width={20} height={20} style={{ display: 'block' }} />
+                      ) : (
+                        s.icon
+                      )}
+                    </div>
                     <div style={{ flex: 1 }}>
                       <span>{s.name}</span>
                       {s.level && (

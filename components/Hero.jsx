@@ -67,11 +67,6 @@ export function Hero() {
               Contact Me
             </a>
           </div>
-          <dl className="hero-stats fade-up" style={{ transitionDelay: '320ms' }}>
-            {HERO_STATS.map(([n, l]) => (
-              <AnimatedStat key={l} value={n} label={l} />
-            ))}
-          </dl>
         </div>
         <div className="fade-up" style={{ transitionDelay: '100ms' }}>
           <div className="hero-photo">
