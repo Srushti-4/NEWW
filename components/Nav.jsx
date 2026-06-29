@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { Icon } from './Icon';
-import { NAV_LINKS } from '@/lib/content';
+import { NAV_LINKS, NAV_ICONS } from '@/lib/content';
 
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('Home');
   const [dark, setDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [logoHover, setLogoHover] = useState(false);
 
   // Track scroll position for nav glass effect
   useEffect(() => {
@@ -60,10 +61,26 @@ export function Nav() {
   return (
     <>
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main navigation">
-        <a href="#home" className="nav-logo" onClick={(e) => { e.preventDefault(); go('Home'); }} style={{ textDecoration: 'none', cursor: 'pointer' }}>SM.</a>
+        <a
+          href="#home"
+          className="nav-logo"
+          onClick={(e) => { e.preventDefault(); go('Home'); }}
+          onMouseEnter={() => setLogoHover(true)}
+          onMouseLeave={() => setLogoHover(false)}
+          style={{ textDecoration: 'none', cursor: 'pointer', position: 'relative' }}
+        >
+          SM.
+          <span className={`logo-hello ${logoHover ? 'show' : ''}`}>
+            <span className="logo-hello-girl">👩</span>
+            <span className="logo-hello-text">Hello!</span>
+          </span>
+        </a>
         <div className="nav-links">
           {NAV_LINKS.map((l) => (
-            <a key={l} href={`#${l.toLowerCase()}`} className={active === l ? 'active' : ''} onClick={(e) => { e.preventDefault(); go(l); }}>{l}</a>
+            <a key={l} href={`#${l.toLowerCase()}`} className={`nav-link-item ${active === l ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); go(l); }}>
+              <span className="nav-link-icon">{NAV_ICONS[l]}</span>
+              {l}
+            </a>
           ))}
         </div>
         <div className="nav-right">

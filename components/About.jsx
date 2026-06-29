@@ -22,10 +22,10 @@ export function About() {
             {/* Details cards below photo */}
             <div className="about-details" style={{ marginTop: '1.5rem' }}>
               <div className="about-detail-item">
-                <div className="about-detail-icon">🎂</div>
+                <div className="about-detail-icon">💼</div>
                 <div className="about-detail-text">
-                  <span className="about-detail-label">Birthday</span>
-                  <span className="about-detail-value">04 Jun 2001</span>
+                  <span className="about-detail-label">Work</span>
+                  <span className="about-detail-value">Currently working as a System Associate @Infosys, Bangalore</span>
                 </div>
               </div>
               <div className="about-detail-item">
@@ -39,14 +39,7 @@ export function About() {
                 <div className="about-detail-icon">🎓</div>
                 <div className="about-detail-text">
                   <span className="about-detail-label">Degree</span>
-                  <span className="about-detail-value">Master of Computer Application (MCA)</span>
-                </div>
-              </div>
-              <div className="about-detail-item">
-                <div className="about-detail-icon">🧑</div>
-                <div className="about-detail-text">
-                  <span className="about-detail-label">Age</span>
-                  <span className="about-detail-value">25</span>
+                  <span className="about-detail-value">Master of Computer Application (MCA) - KLE Technological University Belagavi, Karnataka</span>
                 </div>
               </div>
               <div className="about-detail-item">

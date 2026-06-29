@@ -14,12 +14,14 @@ import { BackToTop } from '@/components/BackToTop';
 import { Analytics } from '@/components/Analytics';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { CursorTrail } from '@/components/CursorTrail';
+import { FloatingText } from '@/components/FloatingText';
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
       <CursorTrail />
+      <FloatingText />
       <a href="#home" className="skip-link">Skip to main content</a>
       <Nav />
       <main>
