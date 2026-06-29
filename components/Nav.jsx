@@ -8,23 +8,48 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('Home');
   const [dark, setDark] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Track scroll position for nav glass effect
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // On mount: check localStorage and system preference for dark mode.
+  useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      setDark(true);
+    } else if (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setDark(true);
+    }
+  }, []);
 
   // Apply dark class to <html> whenever the toggle changes.
   useEffect(() => {
     document.documentElement.className = dark ? 'dark' : '';
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
   }, [dark]);
 
-  // Highlight the nav link for the section currently in view.
+  // Highlight the nav link for the section currently in view using IntersectionObserver.
   useEffect(() => {
-    const onScroll = () => {
-      const sections = NAV_LINKS.map((n) => document.getElementById(n.toLowerCase()));
-      const scrollY = window.scrollY + 80;
-      sections.forEach((s, i) => {
-        if (s && scrollY >= s.offsetTop) setActive(NAV_LINKS[i]);
-      });
-    };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const sections = NAV_LINKS.map((n) => document.getElementById(n.toLowerCase())).filter(Boolean);
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const link = NAV_LINKS.find((n) => n.toLowerCase() === id);
+            if (link) setActive(link);
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
   }, []);
 
   const go = (section) => {
@@ -34,7 +59,7 @@ export function Nav() {
 
   return (
     <>
-      <nav className="nav">
+      <nav className={`nav ${scrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main navigation">
         <a href="#home" className="nav-logo" onClick={(e) => { e.preventDefault(); go('Home'); }} style={{ textDecoration: 'none', cursor: 'pointer' }}>SM.</a>
         <div className="nav-links">
           {NAV_LINKS.map((l) => (
@@ -42,15 +67,31 @@ export function Nav() {
           ))}
         </div>
         <div className="nav-right">
-          <button className={`toggle-btn ${dark ? 'on' : ''}`} onClick={() => setDark(!dark)} title="Toggle dark mode" />
-          <button className="nav-ham" onClick={() => setOpen(!open)}>
+          <button
+            className={`toggle-btn ${dark ? 'on' : ''}`}
+            onClick={() => setDark(!dark)}
+            aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+          />
+          <button
+            className="nav-ham"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+          >
             <Icon name={open ? 'x' : 'menu'} size={22} />
           </button>
         </div>
       </nav>
-      <div className={`mobile-nav ${open ? 'open' : ''}`}>
+      <div
+        id="mobile-nav"
+        className={`mobile-nav ${open ? 'open' : ''}`}
+        role="menu"
+        aria-hidden={!open}
+      >
         {NAV_LINKS.map((l) => (
-          <a key={l} href={`#${l.toLowerCase()}`} onClick={(e) => { e.preventDefault(); go(l); }}>{l}</a>
+          <a key={l} href={`#${l.toLowerCase()}`} role="menuitem" onClick={(e) => { e.preventDefault(); go(l); }}>{l}</a>
         ))}
       </div>
     </>

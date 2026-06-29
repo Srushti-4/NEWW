@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Icon } from './Icon';
+import { Confetti } from './Confetti';
 import { useFadeIn } from '@/lib/useFadeIn';
 import { CONFIG } from '@/lib/content';
 
@@ -10,6 +11,7 @@ export function Contact() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
+  const [confettiKey, setConfettiKey] = useState(0);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ export function Contact() {
       });
       if (res.ok) {
         setSent(true);
+        setConfettiKey((k) => k + 1);
         e.target.reset();
       } else {
         setError('Could not send. Please email me directly.');
@@ -37,6 +40,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="contact-bg" ref={ref}>
+      <Confetti trigger={confettiKey} />
       <div className="contact-grid">
         <div className="fade-up">
           <div className="section-tag">Let&apos;s Talk</div>
@@ -48,6 +52,17 @@ export function Contact() {
           <div className="avail-badge" style={{ marginBottom: '2rem' }}>
             <span></span> Available for opportunities
           </div>
+          {CONFIG.calendly && (
+            <a
+              href={CONFIG.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              style={{ marginBottom: '1.5rem' }}
+            >
+              <Icon name="calendar" size={16} /> Book a 15-min Chat
+            </a>
+          )}
           <div className="contact-info">
             <a href={`mailto:${CONFIG.email}`} className="contact-link">
               <div className="contact-link-icon"><Icon name="mail" size={18} /></div>
@@ -61,10 +76,7 @@ export function Contact() {
               <div className="contact-link-icon"><Icon name="kaggle" size={18} /></div>
               kaggle.com/srushtikmohire
             </a>
-            <a href={CONFIG.github} target="_blank" rel="noopener noreferrer" className="contact-link">
-              <div className="contact-link-icon"><Icon name="github" size={18} /></div>
-              {CONFIG.github.replace('https://', '')}
-            </a>
+
             <div className="contact-link">
               <div className="contact-link-icon"><Icon name="map" size={18} /></div>
               Bengaluru, Karnataka, India
@@ -80,31 +92,31 @@ export function Contact() {
               <button className="btn btn-outline" style={{ marginTop: '1.5rem' }} onClick={() => setSent(false)}>Send Another</button>
             </div>
           ) : (
-            <form onSubmit={submit}>
+            <form onSubmit={submit} noValidate>
               <div style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text)', marginBottom: '1.25rem' }}>Send a Message</div>
               <input type="hidden" name="_subject" value="New message from srushtimohire.com" />
               <input type="hidden" name="_template" value="table" />
               <input type="text" name="_honey" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
               <div className="grid-2" style={{ gap: '0.75rem', marginBottom: 0 }}>
                 <div className="form-group">
-                  <label className="form-label">Name</label>
-                  <input className="form-input" name="name" placeholder="Your name" required />
+                  <label htmlFor="contact-name" className="form-label">Name</label>
+                  <input id="contact-name" className="form-input" name="name" placeholder="Your name" required />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Email</label>
-                  <input className="form-input" name="email" type="email" placeholder="your@email.com" required />
+                  <label htmlFor="contact-email" className="form-label">Email</label>
+                  <input id="contact-email" className="form-input" name="email" type="email" placeholder="your@email.com" required />
                 </div>
               </div>
               <div className="form-group">
-                <label className="form-label">Subject</label>
-                <input className="form-input" name="subject" placeholder="What's this about?" />
+                <label htmlFor="contact-subject" className="form-label">Subject</label>
+                <input id="contact-subject" className="form-input" name="subject" placeholder="What's this about?" />
               </div>
               <div className="form-group">
-                <label className="form-label">Message</label>
-                <textarea className="form-input" name="message" placeholder="Tell me about your project or opportunity..." required />
+                <label htmlFor="contact-message" className="form-label">Message</label>
+                <textarea id="contact-message" className="form-input" name="message" placeholder="Tell me about your project or opportunity..." required />
               </div>
               {error && (
-                <div style={{ color: '#dc2626', fontSize: '0.85rem', marginBottom: '0.75rem' }}>{error}</div>
+                <div role="alert" style={{ color: '#dc2626', fontSize: '0.85rem', marginBottom: '0.75rem' }}>{error}</div>
               )}
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', opacity: sending ? 0.7 : 1 }}>
                 {sending ? 'Sending…' : <>Send Message <Icon name="arrow" size={16} /></>}

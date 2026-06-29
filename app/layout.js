@@ -1,4 +1,12 @@
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-jakarta',
+});
 
 export const metadata = {
   metadataBase: new URL('https://srushtimohire.com'),
@@ -26,10 +34,10 @@ export const metadata = {
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
     ],
     apple: '/apple-touch-icon.png',
   },
+  manifest: '/manifest.json',
 };
 
 export const viewport = {
@@ -49,20 +57,16 @@ const jsonLd = {
     addressRegion: 'Karnataka',
     addressCountry: 'IN',
   },
-  sameAs: ['https://www.linkedin.com/in/srushti-mohire-781528227/', 'https://www.kaggle.com/srushtikmohire'],
+  sameAs: [
+    'https://www.linkedin.com/in/srushti-mohire-781528227/',
+    'https://www.kaggle.com/srushtikmohire',
+    'https://github.com/Srushti-4/my-portfolio',
+  ],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={jakarta.variable}>
       <body>
         <script
           type="application/ld+json"

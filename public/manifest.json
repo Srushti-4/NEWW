@@ -1,0 +1,16 @@
+{
+  "name": "Srushti Mohire — Portfolio",
+  "short_name": "Srushti M.",
+  "description": "Data Engineer & Python Developer portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#3b6bcc",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

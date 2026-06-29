@@ -4,6 +4,8 @@ import { Icon } from './Icon';
 import { useFadeIn } from '@/lib/useFadeIn';
 import { PROJECTS } from '@/lib/content';
 
+const PROJECT_ICONS = ['🏦', '🛡️', '📝', '🤖'];
+
 export function Projects() {
   const ref = useFadeIn();
   return (
@@ -15,13 +17,13 @@ export function Projects() {
           <p className="section-sub">A selection of projects spanning data engineering, machine learning and software development.</p>
           <div className="divider" />
         </div>
-        <div className="grid-3">
+        <div className="grid-2">
           {PROJECTS.map((p, i) => (
-            <div key={i} className="card proj-card fade-up" style={{ transitionDelay: `${i * 80}ms` }}>
-              <div className="proj-img" style={{ background: p.color }}>
-                <span className="proj-img-label">project screenshot</span>
+            <article key={i} className="card proj-card fade-up" style={{ transitionDelay: `${i * 80}ms` }}>
+              <div className="proj-img" style={{ background: p.color, borderStyle: 'solid', borderWidth: '1px', borderColor: 'var(--border)' }}>
+                <span style={{ fontSize: '2.5rem' }}>{PROJECT_ICONS[i] || '📁'}</span>
               </div>
-              <div className="proj-title">{p.title}</div>
+              <h3 className="proj-title">{p.title}</h3>
               <div className="proj-desc">{p.desc}</div>
               <div className="proj-stack">
                 {p.stack.map((s) => <span key={s} className="tag">{s}</span>)}
@@ -41,7 +43,7 @@ export function Projects() {
                   <span style={{ fontSize: '0.78rem', color: 'var(--text3)', fontStyle: 'italic' }}>Links coming soon</span>
                 )}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
