@@ -48,7 +48,7 @@ export function Hero() {
             <span></span> Open to new opportunities
           </div>
           <h1 className="hero-name fade-up" style={{ transitionDelay: '80ms' }}>
-            Hi, I&apos;m<br />
+            Hi, I&apos;m <span className="hero-wave-girl">🙋‍♀️</span><br />
             <em className={`name-cycle ${nameFading ? 'fading' : ''}`}>
               {NAME_LANGUAGES[nameIndex]}
             </em>
