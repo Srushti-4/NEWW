@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { Icon } from './Icon';
 import { AnimatedStat } from './AnimatedStat';
 import { MagneticWrap } from './MagneticWrap';
-import { TextHighlight } from './TextHighlight';
 import { useFadeIn } from '@/lib/useFadeIn';
 import { useTypewriter } from '@/lib/useTypewriter';
 import { CONFIG, HERO_STATS } from '@/lib/content';
@@ -58,8 +57,8 @@ export function Hero() {
             <span className="typewriter">{typedRole}</span>
             <span className="typewriter-cursor">|</span>
           </p>
-          <p className="hero-desc fade-up" style={{ transitionDelay: '200ms' }}>
-            <TextHighlight text="System Associate at Infosys, building data pipelines and intelligent systems that turn raw data into business impact. Based in Bengaluru, India." />
+          <p className="hero-desc fade-up" style={{ transitionDelay: '200ms', color: 'var(--text)' }}>
+            System Associate at Infosys, building data pipelines and intelligent systems that turn raw data into business impact. Based in Bengaluru, India.
           </p>
           <div className="hero-btns fade-up" style={{ transitionDelay: '260ms' }}>
             <MagneticWrap>

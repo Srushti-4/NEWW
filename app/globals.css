@@ -119,7 +119,7 @@ section { padding: 4rem 5vw; }
 .hero-name { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.2; color: var(--text); overflow: visible; }
 .hero-name em { font-style: normal; color: var(--accent); }
 .hero-role { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text2); margin: 0.75rem 0; font-weight: 500; }
-.hero-desc { color: var(--text2); max-width: 480px; margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.75; }
+.hero-desc { color: var(--text); max-width: 480px; margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.75; }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 .hero-photo { width: 280px; height: 280px; border-radius: 24px; background: var(--bg2); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; position: relative; }
 .hero-photo svg { opacity: 0.3; }
