@@ -189,13 +189,13 @@ section { padding: 4rem 5vw; }
 .proj-links { display: flex; gap: 8px; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border); }
 
 /* Certs */
-.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
-.cert-card { display: flex; align-items: flex-start; gap: 12px; padding: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); transition: all var(--transition); }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
+.cert-card { display: flex; align-items: flex-start; gap: 10px; padding: 0.75rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); transition: all var(--transition); }
 .cert-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
-.cert-icon { width: 36px; height: 36px; background: var(--accent-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
-.cert-title { font-weight: 700; font-size: 0.92rem; color: var(--text); }
-.cert-issuer { font-size: 0.82rem; color: var(--text2); margin-top: 2px; }
-.cert-date { font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-top: 2px; }
+.cert-icon { width: 30px; height: 30px; background: var(--accent-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; }
+.cert-title { font-weight: 700; font-size: 0.78rem; color: var(--text); }
+.cert-issuer { font-size: 0.7rem; color: var(--text2); margin-top: 2px; }
+.cert-date { font-size: 0.65rem; color: var(--accent); font-weight: 600; margin-top: 2px; }
 
 /* Resume */
 .resume-wrap { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; max-width: 760px; margin: 0 auto; box-shadow: var(--shadow-lg); }
@@ -1107,4 +1107,19 @@ section { position: relative; }
 /* Magnetic button effect */
 .btn-magnetic {
   transition: transform 0.2s ease-out;
+}
+
+/* Certification credential link */
+.cert-link {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 4px;
+  transition: all var(--transition);
+}
+.cert-link:hover {
+  text-decoration: underline;
+  transform: translateX(3px);
 }

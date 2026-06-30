@@ -77,6 +77,11 @@ export function Skills() {
                   <div className="cert-title">{c.name}</div>
                   <div className="cert-issuer">{c.issuer}</div>
                   <div className="cert-date">{c.date}</div>
+                  {c.link && (
+                    <a href={c.link} target="_blank" rel="noopener noreferrer" className="cert-link">
+                      View Credential →
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
