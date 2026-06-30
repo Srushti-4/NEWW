@@ -1093,3 +1093,18 @@ section { position: relative; }
   opacity: 1;
   transform: scale(1) translateY(0);
 }
+
+/* Smooth scroll snap */
+@media (min-width: 901px) {
+  main {
+    scroll-snap-type: y proximity;
+  }
+  main > section, main > div {
+    scroll-snap-align: start;
+  }
+}
+
+/* Magnetic button effect */
+.btn-magnetic {
+  transition: transform 0.2s ease-out;
+}

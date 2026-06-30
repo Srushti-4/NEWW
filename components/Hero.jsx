@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Icon } from './Icon';
 import { AnimatedStat } from './AnimatedStat';
+import { MagneticWrap } from './MagneticWrap';
+import { TextHighlight } from './TextHighlight';
 import { useFadeIn } from '@/lib/useFadeIn';
 import { useTypewriter } from '@/lib/useTypewriter';
 import { CONFIG, HERO_STATS } from '@/lib/content';
@@ -57,15 +59,19 @@ export function Hero() {
             <span className="typewriter-cursor">|</span>
           </p>
           <p className="hero-desc fade-up" style={{ transitionDelay: '200ms' }}>
-            System Associate at Infosys, building data pipelines and intelligent systems that turn raw data into business impact. Based in Bengaluru, India.
+            <TextHighlight text="System Associate at Infosys, building data pipelines and intelligent systems that turn raw data into business impact. Based in Bengaluru, India." />
           </p>
           <div className="hero-btns fade-up" style={{ transitionDelay: '260ms' }}>
-            <a href="#projects" className="btn btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}>
-              View Projects <Icon name="arrow" size={16} />
-            </a>
-            <a href="#contact" className="btn btn-outline" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
-              Contact Me
-            </a>
+            <MagneticWrap>
+              <a href="#projects" className="btn btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                View Projects <Icon name="arrow" size={16} />
+              </a>
+            </MagneticWrap>
+            <MagneticWrap>
+              <a href="#contact" className="btn btn-outline" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                Contact Me
+              </a>
+            </MagneticWrap>
           </div>
         </div>
         <div className="fade-up" style={{ transitionDelay: '100ms' }}>
