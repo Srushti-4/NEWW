@@ -1147,3 +1147,66 @@ section { position: relative; }
   80% { transform: rotate(2deg); }
   100% { transform: rotate(0deg) scale(1); }
 }
+
+/* Download resume button bounce animation */
+.btn-download:hover {
+  animation: downloadBounce 0.6s ease;
+}
+.btn-download:hover svg {
+  animation: downloadArrow 0.6s ease infinite;
+}
+@keyframes downloadBounce {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+  60% { transform: translateY(2px); }
+}
+@keyframes downloadArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* Resume girl pointing animation */
+.resume-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+.resume-girl {
+  font-size: 2rem;
+  display: inline-block;
+  animation: girlPoint 2s ease-in-out infinite;
+}
+@keyframes girlPoint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.resume-girl-speech {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  animation: speechPop 2s ease-in-out infinite;
+}
+@keyframes speechPop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Contact girl with laptop animation */
+.contact-girl {
+  display: inline-block;
+  font-size: 1.5rem;
+  animation: laptopGirl 3s ease-in-out infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+@keyframes laptopGirl {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(-3deg); }
+  75% { transform: translateY(-2px) rotate(3deg); }
+}

@@ -44,7 +44,7 @@ export function Contact() {
       <div className="contact-grid">
         <div className="fade-up">
           <div className="section-tag">Let&apos;s Talk</div>
-          <h2 className="section-title">Get In Touch</h2>
+          <h2 className="section-title">Get In Touch <span className="contact-girl">👩‍💻</span></h2>
           <div className="divider" />
           <p style={{ color: 'var(--text2)', margin: '1rem 0 1.5rem', fontSize: '0.95rem', lineHeight: 1.75 }}>
             Open to data engineering and software development roles. Feel free to reach out for opportunities, collaborations or just a hello!
