@@ -3,13 +3,18 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Icon } from './Icon';
-import { AnimatedStat } from './AnimatedStat';
 import { MagneticWrap } from './MagneticWrap';
 import { useFadeIn } from '@/lib/useFadeIn';
-import { useTypewriter } from '@/lib/useTypewriter';
-import { CONFIG, HERO_STATS } from '@/lib/content';
+import { CONFIG, CERTS } from '@/lib/content';
 
-const ROLES = ['Data Engineer', 'Python Developer', 'ML Enthusiast', 'Pipeline Builder'];
+// Headline credentials — derived from CERTS so they stay accurate.
+const proDatabricks = CERTS.filter((c) => c.issuer === 'Databricks' && /professional/i.test(c.name)).length;
+const snowAdvanced = CERTS.some((c) => /snowpro advanced/i.test(c.name));
+const CREDENTIALS = [
+  proDatabricks > 0 && `${proDatabricks > 1 ? `${proDatabricks}× ` : ''}Databricks Professional`,
+  snowAdvanced && 'SnowPro Advanced',
+  'Infosys',
+].filter(Boolean);
 
 const NAME_LANGUAGES = [
   'Srushti Mohire',        // English
@@ -25,7 +30,6 @@ const NAME_LANGUAGES = [
 
 export function Hero() {
   const ref = useFadeIn();
-  const typedRole = useTypewriter(ROLES, 80, 50, 2000);
   const [nameIndex, setNameIndex] = useState(0);
   const [nameFading, setNameFading] = useState(false);
 
@@ -54,12 +58,14 @@ export function Hero() {
             </em>
           </h1>
           <p className="hero-role fade-up" style={{ transitionDelay: '140ms' }}>
-            <span className="typewriter">{typedRole}</span>
-            <span className="typewriter-cursor">|</span>
+            Data Engineer · Databricks &amp; Snowflake
           </p>
           <p className="hero-desc fade-up" style={{ transitionDelay: '200ms', color: 'var(--text)' }}>
-            System Associate at Infosys, building data pipelines and intelligent systems that turn raw data into business impact. Based in Bengaluru, India.
+            I build production data pipelines that turn messy, siloed data into reliable, analysis-ready systems — so teams spend their time on decisions, not data wrangling. Based in Bengaluru, India.
           </p>
+          <div className="proj-stack fade-up" style={{ transitionDelay: '230ms', marginBottom: '1.5rem' }}>
+            {CREDENTIALS.map((c) => <span key={c} className="tag tag-accent">{c}</span>)}
+          </div>
           <div className="hero-btns fade-up" style={{ transitionDelay: '260ms' }}>
             <MagneticWrap>
               <a href="#projects" className="btn btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}>
@@ -90,6 +96,9 @@ export function Hero() {
             </a>
             <a href={CONFIG.kaggle} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm" aria-label="Kaggle profile">
               <Icon name="kaggle" size={14} /><span>Kaggle</span>
+            </a>
+            <a href={CONFIG.github} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm" aria-label="GitHub profile">
+              <Icon name="github" size={14} /><span>GitHub</span>
             </a>
           </div>
         </div>

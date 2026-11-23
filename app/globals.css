@@ -131,7 +131,7 @@ section { padding: 4rem 5vw; }
 .hero-stat-l { font-size: 0.75rem; color: var(--text3); margin-top: 2px; }
 
 /* Hero social buttons — equal-width row under the photo */
-.hero-social { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 12px; width: 100%; }
+.hero-social { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; width: 100%; }
 .hero-social .btn { justify-content: center; gap: 6px; padding: 0.45rem 0.4rem; border-radius: 8px; font-size: 0.78rem; }
 
 @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
@@ -972,7 +972,7 @@ section { position: relative; }
 @media (max-width: 900px) {
   .about-grid { gap: 2rem; }
   .contact-grid { gap: 2rem; }
-  .hero-social { grid-template-columns: 1fr 1fr; }
+  .hero-social { grid-template-columns: repeat(3, 1fr); }
   .cert-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
   .achievement-card { flex-direction: column; gap: 12px; }
   .achievement-header { flex-direction: column; gap: 4px; }
@@ -985,7 +985,8 @@ section { position: relative; }
   .hero-desc { margin: 0 auto 1.5rem; }
   .hero-btns { justify-content: center; }
   .hero-stats { justify-content: center; flex-wrap: wrap; }
-  .hero-social { max-width: 250px; margin: 0 auto; }
+  .hero-social { max-width: 300px; margin: 0 auto; }
+  .hero-inner .proj-stack { justify-content: center; }
   .hero-name { font-size: clamp(2rem, 8vw, 3rem); }
 
   .about-photo { max-width: 280px; margin: 0 auto; }

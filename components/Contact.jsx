@@ -24,12 +24,17 @@ export function Contact() {
         body: data,
         headers: { Accept: 'application/json' },
       });
-      if (res.ok) {
+      const json = await res.json().catch(() => ({}));
+      // FormSubmit can answer 200 OK but not deliver (e.g. form not yet activated).
+      // Only treat it as sent when it explicitly says success, and surface its message otherwise.
+      const msg = String(json.message || '');
+      if (res.ok && String(json.success) === 'true' && !/activat/i.test(msg)) {
         setSent(true);
         setConfettiKey((k) => k + 1);
         e.target.reset();
       } else {
-        setError('Could not send. Please email me directly.');
+        console.warn('FormSubmit response:', res.status, json);
+        setError(msg ? `Could not send: ${msg}` : 'Could not send. Please email me directly.');
       }
     } catch {
       setError('Network error. Please email me directly.');
@@ -76,6 +81,10 @@ export function Contact() {
               <div className="contact-link-icon"><Icon name="kaggle" size={18} /></div>
               kaggle.com/srushtikmohire
             </a>
+            <a href={CONFIG.github} target="_blank" rel="noopener noreferrer" className="contact-link">
+              <div className="contact-link-icon"><Icon name="github" size={18} /></div>
+              github.com/Srushti-4
+            </a>
 
             <div className="contact-link">
               <div className="contact-link-icon"><Icon name="map" size={18} /></div>
@@ -92,7 +101,7 @@ export function Contact() {
               <button className="btn btn-outline" style={{ marginTop: '1.5rem' }} onClick={() => setSent(false)}>Send Another</button>
             </div>
           ) : (
-            <form onSubmit={submit} noValidate>
+            <form onSubmit={submit}>
               <div style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text)', marginBottom: '1.25rem' }}>Send a Message</div>
               <input type="hidden" name="_subject" value="New message from srushtimohire.com" />
               <input type="hidden" name="_template" value="table" />

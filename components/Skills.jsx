@@ -1,30 +1,18 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import { Icon } from './Icon';
 import { useFadeIn } from '@/lib/useFadeIn';
 import { SKILLS, CERTS } from '@/lib/content';
 
 export function Skills() {
   const ref = useFadeIn();
-  const barsRef = useRef(null);
-  const [animated, setAnimated] = useState(false);
-
-  useEffect(() => {
-    const el = barsRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimated(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+  // Group certifications by issuer, Professional/Advanced-level first.
+  const rank = (c) => (/professional|advanced/i.test(c.name) ? 0 : /associate|core/i.test(c.name) ? 1 : 2);
+  const certGroups = CERTS.reduce((acc, c) => {
+    (acc[c.issuer] ||= []).push(c);
+    return acc;
+  }, {});
+  Object.values(certGroups).forEach((list) => list.sort((a, b) => rank(a) - rank(b)));
 
   return (
     <section id="skills" className="skills-bg" ref={ref}>
@@ -35,7 +23,7 @@ export function Skills() {
           <p className="section-sub">Technologies and tools I work with professionally.</p>
           <div className="divider" />
         </div>
-        <div ref={barsRef} className="grid-2 fade-up" style={{ transitionDelay: '80ms', gap: '2.5rem' }}>
+        <div className="grid-2 fade-up" style={{ transitionDelay: '80ms', gap: '2.5rem' }}>
           {Object.entries(SKILLS).map(([cat, items]) => (
             <div key={cat}>
               <div className="skill-cat-title">{cat}</div>
@@ -51,14 +39,6 @@ export function Skills() {
                     </div>
                     <div style={{ flex: 1 }}>
                       <span>{s.name}</span>
-                      {s.level && (
-                        <div className="skill-bar-wrap">
-                          <div
-                            className={`skill-bar ${animated ? 'animated' : ''}`}
-                            style={{ '--level': `${s.level}%` }}
-                          />
-                        </div>
-                      )}
                     </div>
                   </div>
                 ))}
@@ -69,8 +49,11 @@ export function Skills() {
 
         <div className="fade-up" style={{ marginTop: '3rem' }}>
           <div className="section-tag" style={{ marginBottom: '0.75rem' }}>Certifications</div>
+          {Object.entries(certGroups).map(([issuer, list]) => (
+          <div key={issuer} style={{ marginBottom: '1.5rem' }}>
+          <div className="skill-cat-title">{issuer} · {list.length}</div>
           <div className="cert-grid">
-            {CERTS.map((c, i) => (
+            {list.map((c, i) => (
               <div key={i} className="cert-card">
                 <div className="cert-icon"><Icon name="cert" size={18} color="var(--accent)" /></div>
                 <div>
@@ -86,6 +69,8 @@ export function Skills() {
               </div>
             ))}
           </div>
+          </div>
+          ))}
         </div>
       </div>
     </section>

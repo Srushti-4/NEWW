@@ -4,8 +4,6 @@ import { Icon } from './Icon';
 import { useFadeIn } from '@/lib/useFadeIn';
 import { PROJECTS } from '@/lib/content';
 
-const PROJECT_ICONS = ['🏦', '🛡️', '📝', '🤖'];
-
 export function Projects() {
   const ref = useFadeIn();
   return (
@@ -14,14 +12,14 @@ export function Projects() {
         <div className="section-head fade-up">
           <div className="section-tag">Portfolio</div>
           <h2 className="section-title">Featured Projects</h2>
-          <p className="section-sub">A selection of projects spanning data engineering, machine learning and software development.</p>
+          <p className="section-sub">A selection of projects spanning AI, machine learning, data and software development.</p>
           <div className="divider" />
         </div>
         <div className="grid-2">
           {PROJECTS.map((p, i) => (
             <article key={i} className="card proj-card fade-up" style={{ transitionDelay: `${i * 80}ms` }}>
               <div className="proj-img" style={{ background: p.color, borderStyle: 'solid', borderWidth: '1px', borderColor: 'var(--border)' }}>
-                <span style={{ fontSize: '2.5rem' }}>{PROJECT_ICONS[i] || '📁'}</span>
+                <span style={{ fontSize: '2.5rem' }}>{p.icon || '📁'}</span>
               </div>
               <h3 className="proj-title">{p.title}</h3>
               <div className="proj-desc">{p.desc}</div>

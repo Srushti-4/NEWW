@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useFadeIn } from '@/lib/useFadeIn';
+import { CERT_COUNT } from '@/lib/content';
 
 export function About() {
   const ref = useFadeIn();
@@ -39,7 +40,7 @@ export function About() {
                 <div className="about-detail-icon">🎓</div>
                 <div className="about-detail-text">
                   <span className="about-detail-label">Degree</span>
-                  <span className="about-detail-value">Master of Computer Application (MCA) - KLE Technological University Belagavi, Karnataka</span>
+                  <span className="about-detail-value">Master of Computer Application (MCA) - KLE Technological University, Hubballi</span>
                 </div>
               </div>
               <div className="about-detail-item">
@@ -59,7 +60,7 @@ export function About() {
               I&apos;m a System Associate at Infosys, contributing to projects that optimize business processes through data transformation, analysis, and automation. I focus on turning raw, messy data into clean, reliable systems that teams can trust. My day-to-day work involves writing efficient Python scripts, crafting complex SQL queries, and orchestrating data workflows across cloud platforms.
             </p>
             <p style={{ color: 'var(--text2)', marginBottom: '1rem', lineHeight: 1.8, fontSize: '0.95rem' }}>
-              Proficient in Python, SQL, Unix, Data Engineering and Databricks — with a strong foundation in AI and Machine Learning, supported by 13 industry certifications including Snowpro Advanced Data Engineer, Databricks Certified Generative AI Engineer, and AWS Cloud Practitioner. I pursued my MCA at KLE Technological University (8.9 CGPA) and hold a BCA from Rani Channamma University, Belagavi. My academic journey gave me a solid grounding in algorithms, data structures, and software engineering principles.
+              Proficient in Python, SQL, Unix, Data Engineering and Databricks — with a strong foundation in AI and Machine Learning, backed by {CERT_COUNT} industry certifications including Databricks Certified Data Engineer Professional, Databricks Machine Learning Professional, and SnowPro Advanced: Data Engineer. I pursued my MCA at KLE Technological University (8.9 CGPA) and hold a BCA from Rani Channamma University, Belagavi. My academic journey gave me a solid grounding in algorithms, data structures, and software engineering principles.
             </p>
             <p style={{ color: 'var(--text2)', marginBottom: '1rem', lineHeight: 1.8, fontSize: '0.95rem' }}>
               I&apos;m passionate about leveraging technical skills and collaboration to deliver innovative solutions in data engineering and business intelligence. Beyond work, I enjoy participating in hackathons — most recently building an AI-powered incident management agent at the GDG Hackathon using LLMs and RAG. I&apos;m always eager to learn new technologies, contribute to open-source projects, and connect with like-minded professionals who share a passion for building impactful software.

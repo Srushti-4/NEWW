@@ -18,21 +18,19 @@ export function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // On mount: check localStorage and system preference for dark mode.
+  // On mount: pick up the theme the inline script in layout.js already applied
+  // (from localStorage or the system preference), so there is no light-mode flash.
   useEffect(() => {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-      setDark(true);
-    } else if (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setDark(true);
-    }
+    setDark(document.documentElement.classList.contains('dark'));
   }, []);
 
-  // Apply dark class to <html> whenever the toggle changes.
-  useEffect(() => {
-    document.documentElement.className = dark ? 'dark' : '';
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-  }, [dark]);
+  // Apply/persist only when the user actually clicks the toggle.
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle('dark', next);
+    try { localStorage.setItem('theme', next ? 'dark' : 'light'); } catch {}
+  };
 
   // Highlight the nav link for the section currently in view using IntersectionObserver.
   useEffect(() => {
@@ -86,7 +84,7 @@ export function Nav() {
         <div className="nav-right">
           <button
             className={`toggle-btn ${dark ? 'on' : ''}`}
-            onClick={() => setDark(!dark)}
+            onClick={toggleTheme}
             aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
             title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
           />
@@ -108,7 +106,9 @@ export function Nav() {
         aria-hidden={!open}
       >
         {NAV_LINKS.map((l) => (
-          <a key={l} href={`#${l.toLowerCase()}`} role="menuitem" onClick={(e) => { e.preventDefault(); go(l); }}>{l}</a>
+          <a key={l} href={`#${l.toLowerCase()}`} role="menuitem" onClick={(e) => { e.preventDefault(); go(l); }}>
+            <span className="nav-link-icon">{NAV_ICONS[l]}</span> {l}
+          </a>
         ))}
       </div>
     </>

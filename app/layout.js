@@ -12,7 +12,7 @@ export const metadata = {
   metadataBase: new URL('https://srushtimohire.com'),
   title: 'Srushti Mohire — Data Engineer & Python Developer',
   description:
-    'Srushti Mohire — System Associate at Infosys. Data Engineer building Python, SQL, Databricks and Snowflake pipelines. Based in Bengaluru, India.',
+    'Srushti Mohire — Data Engineer at Infosys building production pipelines on Databricks and Snowflake. 2× Databricks Professional, SnowPro Advanced. Bengaluru, India.',
   authors: [{ name: 'Srushti Mohire' }],
   alternates: { canonical: '/' },
   robots: { index: true, follow: true },
@@ -60,14 +60,18 @@ const jsonLd = {
   sameAs: [
     'https://www.linkedin.com/in/srushti-mohire-781528227/',
     'https://www.kaggle.com/srushtikmohire',
-    'https://github.com/Srushti-4/my-portfolio',
+    'https://github.com/Srushti-4',
   ],
 };
 
+// Runs before first paint so dark-mode users never see a flash of the light theme.
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}})();`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={jakarta.variable}>
+    <html lang="en" className={jakarta.variable} suppressHydrationWarning>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
