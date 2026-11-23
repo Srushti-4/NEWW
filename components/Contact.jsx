@@ -12,14 +12,35 @@ export function Contact() {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
   const [confettiKey, setConfettiKey] = useState(0);
+  const [draft, setDraft] = useState(null);
+
+  const mailtoHref = draft
+    ? `mailto:${CONFIG.email}?subject=${encodeURIComponent(draft.subject || `Message from ${draft.name}`)}&body=${encodeURIComponent(`${draft.message}\n\n— ${draft.name} (${draft.email})`)}`
+    : `mailto:${CONFIG.email}`;
 
   const submit = async (e) => {
     e.preventDefault();
     setSending(true);
     setError('');
+    const data = new FormData(e.target);
+    // Remember what was typed so the mailto fallback can prefill it if sending fails.
+    setDraft({
+      name: data.get('name') || '',
+      email: data.get('email') || '',
+      subject: data.get('subject') || '',
+      message: data.get('message') || '',
+    });
+    const useWeb3 = Boolean(CONFIG.web3formsKey);
+    if (useWeb3) {
+      data.append('access_key', CONFIG.web3formsKey);
+      data.set('subject', data.get('subject') || 'New message from portfolio');
+      data.append('from_name', 'Portfolio contact form');
+      data.delete('_subject');
+      data.delete('_template');
+      data.delete('_honey');
+    }
     try {
-      const data = new FormData(e.target);
-      const res = await fetch(CONFIG.formEndpoint, {
+      const res = await fetch(useWeb3 ? 'https://api.web3forms.com/submit' : CONFIG.formEndpoint, {
         method: 'POST',
         body: data,
         headers: { Accept: 'application/json' },
@@ -34,10 +55,10 @@ export function Contact() {
         e.target.reset();
       } else {
         console.warn('FormSubmit response:', res.status, json);
-        setError(msg ? `Could not send: ${msg}` : 'Could not send. Please email me directly.');
+        setError('The message could not be sent from here.');
       }
     } catch {
-      setError('Network error. Please email me directly.');
+      setError('Network error — the message could not be sent.');
     } finally {
       setSending(false);
     }
@@ -125,7 +146,12 @@ export function Contact() {
                 <textarea id="contact-message" className="form-input" name="message" placeholder="Tell me about your project or opportunity..." required />
               </div>
               {error && (
-                <div role="alert" style={{ color: '#dc2626', fontSize: '0.85rem', marginBottom: '0.75rem' }}>{error}</div>
+                <div role="alert" style={{ color: '#dc2626', fontSize: '0.85rem', marginBottom: '0.75rem' }}>
+                  {error}{' '}
+                  <a href={mailtoHref} style={{ color: 'var(--accent, #3b6bcc)', fontWeight: 600, textDecoration: 'underline' }}>
+                    Send it by email instead →
+                  </a>
+                </div>
               )}
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', opacity: sending ? 0.7 : 1 }}>
                 {sending ? 'Sending…' : <>Send Message <Icon name="arrow" size={16} /></>}
