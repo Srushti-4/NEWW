@@ -26,7 +26,7 @@ export default function ResumePage() {
       <header className="rp-header">
         <div>
           <h1 className="rp-name">Srushti Mohire</h1>
-          <p className="rp-title">Data Engineer | System Associate, Infosys</p>
+          <p className="rp-title">Databricks Engineer | System Associate, Infosys</p>
         </div>
         <div className="rp-contact">
           <p>{CONFIG.email}</p>

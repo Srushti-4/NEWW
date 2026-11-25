@@ -58,10 +58,10 @@ export function Hero() {
             </em>
           </h1>
           <p className="hero-role fade-up" style={{ transitionDelay: '140ms' }}>
-            Data Engineer · Databricks &amp; Snowflake
+            Databricks Engineer · Infosys
           </p>
           <p className="hero-desc fade-up" style={{ transitionDelay: '200ms', color: 'var(--text)' }}>
-            I build production data pipelines that turn messy, siloed data into reliable, analysis-ready systems — so teams spend their time on decisions, not data wrangling. Based in Bengaluru, India.
+            I&apos;m a Databricks Engineer at Infosys, working on the migration of RRP reports to Databricks — creating the functions behind the reports and testing them to make sure every number is right. Based in Bengaluru, India.
           </p>
           <div className="proj-stack fade-up" style={{ transitionDelay: '230ms', marginBottom: '1.5rem' }}>
             {CREDENTIALS.map((c) => <span key={c} className="tag tag-accent">{c}</span>)}

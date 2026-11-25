@@ -11,25 +11,25 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'Srushti Mohire — Data Engineer & Python Developer',
+  title: 'Srushti Mohire — Databricks Engineer',
   description:
-    'Srushti Mohire — Data Engineer at Infosys building production pipelines on Databricks and Snowflake. 2× Databricks Professional, SnowPro Advanced. Bengaluru, India.',
+    'Srushti Mohire — Databricks Engineer at Infosys working on RRP reports migration: creating and testing functions in Databricks. 2× Databricks Professional, SnowPro Advanced. Bengaluru, India.',
   authors: [{ name: 'Srushti Mohire' }],
   alternates: { canonical: '/' },
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
     url: `${SITE_URL}/`,
-    title: 'Srushti Mohire — Data Engineer & Python Developer',
+    title: 'Srushti Mohire — Databricks Engineer',
     description:
-      'System Associate at Infosys. Data Engineer building Python, SQL, Databricks and Snowflake pipelines.',
+      'Databricks Engineer at Infosys working on RRP reports migration — creating and testing functions in Databricks.',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Srushti Mohire — Data Engineer & Python Developer',
+    title: 'Srushti Mohire — Databricks Engineer',
     description:
-      'System Associate at Infosys. Data Engineer building Python, SQL, Databricks and Snowflake pipelines.',
+      'Databricks Engineer at Infosys working on RRP reports migration — creating and testing functions in Databricks.',
     images: ['/og-image.png'],
   },
   icons: {
@@ -50,7 +50,7 @@ const jsonLd = {
   '@type': 'Person',
   name: 'Srushti Mohire',
   url: `${SITE_URL}/`,
-  jobTitle: 'System Associate, Data Engineer',
+  jobTitle: 'Databricks Engineer (System Associate)',
   worksFor: { '@type': 'Organization', name: 'Infosys' },
   address: {
     '@type': 'PostalAddress',
