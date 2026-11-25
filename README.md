@@ -9,7 +9,7 @@ A personal portfolio website for **Srushti Mohire** (Data Engineer & Python Deve
 - **Next.js 14** (App Router) — React framework, static export
 - **React 18** — UI components
 - **Plain CSS** (`globals.css` with CSS variables for theming, including dark mode)
-- **FormSubmit.co** — handles the contact form (no backend needed)
+- **Web3Forms** — handles the contact form (no backend needed); falls back to a prefilled email link if sending fails
 - **Google Fonts** — Plus Jakarta Sans
 
 ---
@@ -21,6 +21,8 @@ npm install        # install dependencies (first time only)
 npm run dev        # start local dev server at http://localhost:3000
 npm run build      # build the static site into the out/ folder for deployment
 ```
+
+> ⚠️ **Building on drive D: fails** with `EISDIR: illegal operation on a directory, readlink` — D: is exFAT/FAT, which webpack can't handle. `npm run dev` works there; for a local production build, copy the project to an NTFS drive (e.g. C:). Vercel builds are unaffected.
 
 > ⚠️ **Do not run `npm run build` while `npm run dev` is running** — they share the `.next` cache and will corrupt each other. Stop the dev server first. If you ever see a `Cannot find module './###.js'` error, delete the `.next` folder and restart.
 
@@ -50,12 +52,13 @@ One React component per section of the page, kept separate for easy editing.
 Shared data and logic that components import.
 - **`content.js`** — ⭐ **The main file to edit.** All the site's content lives here: contact links (`CONFIG`), skills, projects, certifications, experience, education, and hero stats. Update text/links here without touching component code.
 - **`useFadeIn.js`** — A small custom React hook that adds the scroll-triggered fade-in animation to sections.
+- **`site.js`** — The site's public URL. Uses `NEXT_PUBLIC_SITE_URL` if set, otherwise Vercel's production URL automatically. Feeds SEO metadata, `sitemap.xml`, `robots.txt` and the footer.
 
 ### `public/`
 Static assets served as-is at the site root (e.g. `first.jpg` is available at `/first.jpg`).
 - **`first.jpg`** — Hero section profile photo.
 - **`second.jpg`** — About section photo.
-- *(To add before launch: `resume.pdf`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `og-image.png`.)*
+- **`resume.pdf`**, **`favicon.svg`**, **`apple-touch-icon.png`**, **`og-image.png`**, **`manifest.json`** — résumé download, icons, social preview image and web-app manifest.
 
 ### Root config files
 - **`package.json`** — Project metadata, dependencies, and the npm scripts (`dev`, `build`, `start`, `lint`).
@@ -83,11 +86,16 @@ Most edits only require changing **`lib/content.js`**:
 | Certifications | `CERTS` |
 | Work experience | `EXPERIENCE` |
 | Education | `EDUCATION` |
-| Hero stat numbers | `HERO_STATS` |
+| Achievements | `ACHIEVEMENTS` |
+| Contact form key (Web3Forms) | `CONFIG.web3formsKey` |
 
 To change a **photo**, replace the file in `public/`. To change **styling/colors**, edit the CSS variables at the top of `app/globals.css`.
 
 ---
+
+## Custom domain
+
+After buying a domain, add it in Vercel → Settings → Domains, then set the environment variable `NEXT_PUBLIC_SITE_URL` (e.g. `https://srushtimohire.com`) and redeploy so SEO tags, sitemap and robots use it.
 
 ## Deployment
 

@@ -1,5 +1,6 @@
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
+import { SITE_URL } from '@/lib/site';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -9,7 +10,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://srushtimohire.com'),
+  metadataBase: new URL(SITE_URL),
   title: 'Srushti Mohire — Data Engineer & Python Developer',
   description:
     'Srushti Mohire — Data Engineer at Infosys building production pipelines on Databricks and Snowflake. 2× Databricks Professional, SnowPro Advanced. Bengaluru, India.',
@@ -18,7 +19,7 @@ export const metadata = {
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
-    url: 'https://srushtimohire.com/',
+    url: `${SITE_URL}/`,
     title: 'Srushti Mohire — Data Engineer & Python Developer',
     description:
       'System Associate at Infosys. Data Engineer building Python, SQL, Databricks and Snowflake pipelines.',
@@ -48,7 +49,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Srushti Mohire',
-  url: 'https://srushtimohire.com/',
+  url: `${SITE_URL}/`,
   jobTitle: 'System Associate, Data Engineer',
   worksFor: { '@type': 'Organization', name: 'Infosys' },
   address: {

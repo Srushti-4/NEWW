@@ -8,7 +8,11 @@ export function CursorTrail() {
   useEffect(() => {
     const dot = dotRef.current;
     if (!dot) return;
+    // Skip on touch screens (no cursor) and for users who prefer reduced motion.
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+    let rafId = 0;
     let mouseX = 0, mouseY = 0;
     let dotX = 0, dotY = 0;
 
@@ -27,7 +31,7 @@ export function CursorTrail() {
       dotY += (mouseY - dotY) * 0.15;
       dot.style.left = `${dotX}px`;
       dot.style.top = `${dotY}px`;
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
 
     document.addEventListener('mousemove', onMove);
@@ -35,6 +39,7 @@ export function CursorTrail() {
     animate();
 
     return () => {
+      cancelAnimationFrame(rafId);
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mouseleave', onLeave);
     };

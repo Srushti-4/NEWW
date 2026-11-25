@@ -124,7 +124,7 @@ export function Contact() {
           ) : (
             <form onSubmit={submit}>
               <div style={{ fontWeight: 700, fontSize: '1.05rem', color: 'var(--text)', marginBottom: '1.25rem' }}>Send a Message</div>
-              <input type="hidden" name="_subject" value="New message from srushtimohire.com" />
+              <input type="hidden" name="_subject" value="New message from your portfolio" />
               <input type="hidden" name="_template" value="table" />
               <input type="text" name="_honey" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
               <div className="grid-2" style={{ gap: '0.75rem', marginBottom: 0 }}>
