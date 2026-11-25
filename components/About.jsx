@@ -57,23 +57,21 @@ export function About() {
             <h2 className="section-title">Turning Data Into<br />Meaningful Insights</h2>
             <div className="divider" />
             <p style={{ color: 'var(--text2)', marginBottom: '1rem', lineHeight: 1.8, fontSize: '0.95rem' }}>
-              I&apos;m a Databricks Engineer (System Associate) at Infosys, working on the <strong>RRP Reports Migration process</strong>. In this project, existing RRP reports are moved onto Databricks. My part is creating the functions in Databricks that reproduce each report&apos;s business logic and calculations, and then testing them — validating the migrated reports so the results are accurate, complete, and consistent with the originals before they go live.
+              I&apos;m a System Associate at Infosys, contributing to projects that optimize business processes through data transformation, analysis, and automation. I focus on turning raw, messy data into clean, reliable systems that teams can trust. My day-to-day work involves orchestrating data workflows across cloud platforms.
             </p>
             <div style={{ borderLeft: '3px solid var(--accent)', background: 'var(--accent-light)', borderRadius: '10px', padding: '0.9rem 1.1rem', marginBottom: '1rem' }}>
               <div style={{ fontWeight: 700, color: 'var(--text)', fontSize: '0.9rem', marginBottom: '0.4rem' }}>
-                Current work · RRP Reports Migration Process
+                Current work · RRP MYSS Reports Migration to Databricks
               </div>
-              <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--text2)', fontSize: '0.88rem', lineHeight: 1.7 }}>
-                <li>Migrating existing RRP reports onto Databricks</li>
-                <li>Creating Databricks functions that reproduce each report&apos;s business logic and calculations</li>
-                <li>Testing the functions and validating the migrated reports for accuracy before go-live</li>
-              </ul>
+              <p style={{ margin: 0, color: 'var(--text2)', fontSize: '0.9rem', lineHeight: 1.75 }}>
+                I&apos;m a Databricks Engineer at Infosys, working on the <strong>RRP MYSS Reports Migration to Databricks</strong> process. In this project, I have worked on report creation and testing — validating the migrated reports so the results are accurate, complete, and consistent with the originals before they go into production. I have also worked on enabling <strong>data-level entitlements</strong> for RRP reports, including their creation and testing.
+              </p>
             </div>
             <p style={{ color: 'var(--text2)', marginBottom: '1rem', lineHeight: 1.8, fontSize: '0.95rem' }}>
               Proficient in Python, SQL, Unix, Data Engineering and Databricks — with a strong foundation in AI and Machine Learning, backed by {CERT_COUNT} industry certifications including Databricks Certified Data Engineer Professional, Databricks Machine Learning Professional, and SnowPro Advanced: Data Engineer. I pursued my MCA at KLE Technological University (8.9 CGPA) and hold a BCA from Rani Channamma University, Belagavi. My academic journey gave me a solid grounding in algorithms, data structures, and software engineering principles.
             </p>
             <p style={{ color: 'var(--text2)', marginBottom: '1rem', lineHeight: 1.8, fontSize: '0.95rem' }}>
-              I&apos;m passionate about leveraging technical skills and collaboration to deliver reliable solutions on Databricks and in reporting. Beyond work, I enjoy participating in hackathons — most recently building an AI-powered incident management agent at the GDG Hackathon using LLMs and RAG. I&apos;m always eager to learn new technologies, contribute to open-source projects, and connect with like-minded professionals who share a passion for building impactful software.
+              I&apos;m passionate about leveraging technical skills and collaboration to deliver innovative solutions in data engineering and business intelligence. Beyond work, I enjoy participating in hackathons — most recently building an AI-powered incident management agent at the GDG Hackathon using LLMs and RAG. I&apos;m always eager to learn new technologies, contribute to open-source projects, and connect with like-minded professionals who share a passion for building impactful software.
             </p>
           </div>
         </div>

@@ -13,7 +13,7 @@ export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'Srushti Mohire — Databricks Engineer',
   description:
-    'Srushti Mohire — Databricks Engineer at Infosys working on the RRP Reports Migration process: creating and testing functions in Databricks. 2× Databricks Professional, SnowPro Advanced. Bengaluru, India.',
+    'Srushti Mohire — Databricks Engineer at Infosys working on the RRP MYSS Reports Migration to Databricks: report creation, testing and data-level entitlements. 2× Databricks Professional, SnowPro Advanced. Bengaluru, India.',
   authors: [{ name: 'Srushti Mohire' }],
   alternates: { canonical: '/' },
   robots: { index: true, follow: true },
@@ -22,14 +22,14 @@ export const metadata = {
     url: `${SITE_URL}/`,
     title: 'Srushti Mohire — Databricks Engineer',
     description:
-      'Databricks Engineer at Infosys working on the RRP Reports Migration process — creating and testing functions in Databricks.',
+      'Databricks Engineer at Infosys working on the RRP MYSS Reports Migration to Databricks — report creation, testing and data-level entitlements.',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Srushti Mohire — Databricks Engineer',
     description:
-      'Databricks Engineer at Infosys working on the RRP Reports Migration process — creating and testing functions in Databricks.',
+      'Databricks Engineer at Infosys working on the RRP MYSS Reports Migration to Databricks — report creation, testing and data-level entitlements.',
     images: ['/og-image.png'],
   },
   icons: {
