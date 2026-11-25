@@ -67,7 +67,7 @@ export function Nav() {
           onMouseLeave={() => setLogoHover(false)}
           style={{ textDecoration: 'none', cursor: 'pointer', position: 'relative' }}
         >
-          <span className="nav-logo-text">Srushti KM</span>
+          <span className="nav-logo-text">Srushti Mohire</span>
           <span className={`logo-hello ${logoHover ? 'show' : ''}`}>
             <span className="logo-hello-girl">👩</span>
             <span className="logo-hello-text">Hello!</span>
