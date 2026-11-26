@@ -44,6 +44,10 @@
 @media print {
   .resume-page { padding: 0; max-width: none; }
   .rp-footer { display: none; }
+  html, body { background: #fff !important; }
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  @page { margin: 0.35in; size: A4; }
+  @page { margin: 0.3in 0.35in; size: A4; }
+  /* Fit on one page: tighter section spacing, and never split a section or entry across pages. */
+  .resume-page section.rp-section { padding: 0.35rem 0 0.45rem; margin-bottom: 0.15rem; break-inside: avoid; page-break-inside: avoid; }
+  .rp-entry { break-inside: avoid; page-break-inside: avoid; }
 }
