@@ -33,8 +33,8 @@ export function Projects() {
                   </a>
                 )}
                 {p.live && (
-                  <a href={p.live} target="_blank" rel="noopener noreferrer" className="btn btn-sm" style={{ background: 'var(--accent-light)', color: 'var(--accent)' }}>
-                    <Icon name="link" size={13} /> Live
+                  <a href={p.live} {...(p.live.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="btn btn-sm" style={{ background: 'var(--accent-light)', color: 'var(--accent)' }}>
+                    <Icon name="link" size={13} /> {p.live.startsWith('http') ? 'Live' : 'Live demo'}
                   </a>
                 )}
                 {!p.code && !p.live && (
